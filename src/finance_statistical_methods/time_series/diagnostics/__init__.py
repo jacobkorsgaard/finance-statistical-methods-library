@@ -1,0 +1,1 @@
+"""Time-series diagnostics methods."""
