@@ -1,6 +1,9 @@
 import pytest
 
-from finance_statistical_methods.risk import empirical_expected_shortfall, empirical_var
+from finance_statistical_methods.risk_management import (
+    empirical_expected_shortfall,
+    empirical_var,
+)
 
 
 def test_empirical_var_and_es():
