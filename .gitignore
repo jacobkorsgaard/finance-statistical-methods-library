@@ -23,3 +23,6 @@ Thumbs.db
 references/local_books/
 *.pdf
 .ipynb_checkpoints/
+
+# Local curriculum and development records
+.development/

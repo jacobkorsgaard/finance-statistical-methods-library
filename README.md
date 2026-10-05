@@ -49,12 +49,9 @@ All empirical data are fixed local snapshots, so notebook execution requires no 
 | `src/` | Reusable statistical functions, including preserved compatible APIs |
 | `tests/` | Analytical, numerical and data-integrity checks |
 | `data/` | Documented reproducible data snapshots |
-| [ROADMAP.md](ROADMAP.md) and [NOTEBOOK_SPECS/](NOTEBOOK_SPECS/) | Current curriculum and notebook scope |
-| [AGENTS.md](AGENTS.md) | Consolidated development instructions |
-| [docs/](docs/) | Writing conventions and substantive source clarifications |
 
-## Acknowledgement and references
+## Acknowledgement
 
 Thank you to Professor Stefano Tonellato at Università Ca’ Foscari Venezia for teaching *Statistical Models and Methods for Finance* and providing the foundations that inspired this project. The Python implementation and additional explanations are my own work. Any errors or interpretations are my responsibility.
 
-See [REFERENCES.md](REFERENCES.md) for the course source and supporting reading, and [source notes](docs/SOURCE_NOTES.md) for conventions and clarifications. Course slides, thesis and textbooks are kept locally and excluded from git. A repository license remains to be selected, as recorded in [LICENSE](LICENSE).
+A repository license remains to be selected, as recorded in [LICENSE](LICENSE).
