@@ -1,0 +1,111 @@
+[
+  {
+    "file": "ecdat_sp500.csv",
+    "source_url": "https://vincentarelbundock.github.io/Rdatasets/csv/Ecdat/SP500.csv",
+    "sha256": "cfd744a79feb78816980f78abd88beb7123e791af0080fa04d014dfc8b6462c3",
+    "rows": 2783,
+    "retrieved_utc": "2026-10-04",
+    "columns": [
+      "rownames",
+      "r500"
+    ]
+  },
+  {
+    "file": "ecdat_capm.csv",
+    "source_url": "https://vincentarelbundock.github.io/Rdatasets/csv/Ecdat/Capm.csv",
+    "sha256": "47d1a7a11374c3cf982600e6fe0ca1c6337858e399df034af44b519c1a7a3afa",
+    "rows": 516,
+    "retrieved_utc": "2026-10-04",
+    "columns": [
+      "rownames",
+      "rfood",
+      "rdur",
+      "rcon",
+      "rmrf",
+      "rf"
+    ]
+  },
+  {
+    "file": "ecdat_mishkin.csv",
+    "source_url": "https://vincentarelbundock.github.io/Rdatasets/csv/Ecdat/Mishkin.csv",
+    "sha256": "37a7ce200427049f3707ae19b4c77c9f293de4ffb649b03b8d4040f89f4cbe8f",
+    "rows": 491,
+    "retrieved_utc": "2026-10-04",
+    "columns": [
+      "rownames",
+      "pai1",
+      "pai3",
+      "tb1",
+      "tb3",
+      "cpi"
+    ]
+  },
+  {
+    "file": "sp500_prices_2017_2018.csv",
+    "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=1485907200&period2=1542412800&interval=1d",
+    "sha256": "07e14019233dc4351839c718adae066b6bd3f11b149c7b81bd02417897fef373",
+    "rows": 454,
+    "retrieved_utc": "2026-10-04",
+    "columns": [
+      "Date",
+      "Close"
+    ]
+  },
+  {
+    "file": "sp500_prices_2017_2025.csv",
+    "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=1483228800&period2=1767225600&interval=1d",
+    "sha256": "477799188e51e714fccb1c987b6b3b36ba176696cda54e106a9e1a7ccdddd677",
+    "rows": 2262,
+    "columns": [
+      "Date",
+      "Close"
+    ],
+    "retrieved_utc": "2026-10-04",
+    "ticker": "^GSPC",
+    "provider_name": "S&P 500",
+    "units": "USD",
+    "series_type": "price index",
+    "timezone": "America/New_York",
+    "start": "2017-01-03",
+    "end": "2025-12-31",
+    "missing_close_rows_removed": 0
+  },
+  {
+    "file": "dax_price_prices_2017_2025.csv",
+    "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGDAXIP?period1=1483228800&period2=1767225600&interval=1d",
+    "sha256": "d8f73998309907d651f5fae7ecb62d74a17e61371ec79dae4a95c492a11d89b4",
+    "rows": 2280,
+    "columns": [
+      "Date",
+      "Close"
+    ],
+    "retrieved_utc": "2026-10-04",
+    "ticker": "^GDAXIP",
+    "provider_name": "DAX                           K",
+    "units": "EUR",
+    "series_type": "price index",
+    "timezone": "Europe/Berlin",
+    "start": "2017-01-03",
+    "end": "2025-12-30",
+    "missing_close_rows_removed": 5
+  },
+  {
+    "file": "eurusd_2017_2025.csv",
+    "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/EURUSD%3DX?period1=1483228800&period2=1767225600&interval=1d",
+    "sha256": "b291ae8229938267e486dbad39def77979e6cb7452f8efa5f14037c3b404ad6f",
+    "rows": 2341,
+    "columns": [
+      "Date",
+      "Close"
+    ],
+    "retrieved_utc": "2026-10-04",
+    "ticker": "EURUSD=X",
+    "provider_name": "EUR/USD",
+    "units": "USD per EUR",
+    "series_type": "FX quote",
+    "timezone": "Europe/London",
+    "start": "2017-01-02",
+    "end": "2025-12-31",
+    "missing_close_rows_removed": 8
+  }
+]

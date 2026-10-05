@@ -18,3 +18,8 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Personal/reference source files (no redistribution permission established)
+references/local_books/
+*.pdf
+.ipynb_checkpoints/
