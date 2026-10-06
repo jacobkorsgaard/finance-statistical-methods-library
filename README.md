@@ -22,6 +22,8 @@ Read them in order. Notebook 02 introduces random vectors, marginal and conditio
 
 Notebook 03 distinguishes bias, consistency and sampling uncertainty, then introduces frequentist tests and confidence intervals. Its Gaussian example tests the mean and standard deviation with unknown variance. The MLE section covers closed-form and numerical solutions, asymptotic inference, and AIC/BIC model comparison.
 
+Notebook 04 develops histograms, kernel density estimates, the ECDF and empirical quantiles. Its final QQ illustration compares one simulated Laplace sample with four parametric candidates, showing why Student-t and Laplace can be difficult to distinguish over a finite observed range.
+
 Notebooks 01–05 and 07 use simulated observations. Notebook 06 uses US/German market and FX snapshots, 08 includes the Mishkin inflation example, and 09 applies the time-series workflow to S&P 500 returns.
 
 ## Setup and verification
