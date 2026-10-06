@@ -106,3 +106,41 @@ def linear_combination_variance(
         raise ValueError("covariance matrix must be positive semidefinite")
     value = float(coefficients @ sigma @ coefficients)
     return max(value, 0.0)
+
+
+def bivariate_symmetric_laplace_pdf(
+    x: ArrayLike, location: ArrayLike, covariance: ArrayLike
+) -> NDArray[np.float64]:
+    """Density of location + sqrt(W)*Z, W~Exp(1), Z~N_2(0, covariance).
+
+    W and Z are independent. The specified matrix is the actual covariance,
+    not the scale of the univariate Laplace marginals. Points have shape
+    (..., 2); the return shape is (...). All inputs must be finite and real,
+    and covariance must be symmetric positive definite. The density is +inf
+    at its location, an integrable singularity rather than a point mass.
+    """
+    from scipy.special import k0
+
+    if any(np.iscomplexobj(value) for value in (x, location, covariance)):
+        raise ValueError("points, location and covariance must be real")
+    points = np.asarray(x, dtype=float)
+    center = np.asarray(location, dtype=float)
+    sigma = np.asarray(covariance, dtype=float)
+    if points.ndim == 0 or points.shape[-1] != 2 or points.size == 0:
+        raise ValueError("points must have nonempty shape (..., 2)")
+    if center.shape != (2,) or sigma.shape != (2, 2):
+        raise ValueError("location and covariance must have shapes (2,) and (2, 2)")
+    if not all(np.all(np.isfinite(value)) for value in (points, center, sigma)):
+        raise ValueError("all inputs must be finite")
+    tolerance = 1e-12 * float(np.max(np.abs(sigma)))
+    if not np.allclose(sigma, sigma.T, rtol=0, atol=tolerance):
+        raise ValueError("covariance must be symmetric")
+    sigma = sigma / 2 + sigma.T / 2
+    try:
+        factor = np.linalg.cholesky(sigma)
+    except np.linalg.LinAlgError as error:
+        raise ValueError("covariance must be positive definite") from error
+    standardized = np.linalg.solve(factor, (points - center).reshape(-1, 2).T)
+    radius = np.sqrt(2 * np.sum(standardized**2, axis=0))
+    density = k0(radius) / (np.pi * np.prod(np.diag(factor)))
+    return np.asarray(density.reshape(points.shape[:-1]), dtype=float)

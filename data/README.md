@@ -1,6 +1,6 @@
 # Data snapshots
 
-Notebooks 01–05 use synthetic observations. Notebook 06 reads the local market snapshots below and performs no network requests. The time-series drafts in 07–09 retain their earlier datasets.
+Notebooks 01–05 use synthetic observations. Notebook 06 reads the local market snapshots below and performs no network requests. The time-series notebooks in 07–09 retain their earlier datasets.
 
 ## US and German market application
 
@@ -26,8 +26,8 @@ German exposure is converted to USD using DAX EUR level × USD per EUR. The port
 |---|---|---|
 | `ecdat_sp500.csv` | 2,783 daily decimal log returns, January 1981–April 1991, without exact dates or prices | Preserved course reference |
 | `ecdat_capm.csv` | 516 monthly observations, January 1960–December 2002. `rfood` is food-industry excess return in percentage points | Preserved course reference |
-| `ecdat_mishkin.csv` | 491 monthly observations, February 1950–December 1990. `pai1` is one-month inflation in annualized percentage units | Inflation example in Notebook 07 |
-| `sp500_prices_2017_2018.csv` | 454 Yahoo S&P 500 closes, February 1, 2017–November 16, 2018 | Preserved ARCH/GARCH and capstone examples in 08–09 |
+| `ecdat_mishkin.csv` | 491 monthly observations, February 1950–December 1990. `pai1` is one-month inflation in annualized percentage units | Inflation example in Notebook 08 |
+| `sp500_prices_2017_2018.csv` | 454 Yahoo S&P 500 closes, February 1, 2017–November 16, 2018 | Preserved capstone example in Notebook 09 |
 
 The Ecdat CSV exports retain their original row-number column. They come from the public Rdatasets export of the R package Ecdat. Dataset documentation: [SP500](https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/SP500.html), [Capm](https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/Capm.html), and [Mishkin](https://vincentarelbundock.github.io/Rdatasets/doc/Ecdat/Mishkin.html). Exact CSV sources and checksums appear in the manifest. Monthly dates in the inflation example are reconstructed from its documented regular sequence. Exact daily dates are not invented for the old SP500 return-only series.
 

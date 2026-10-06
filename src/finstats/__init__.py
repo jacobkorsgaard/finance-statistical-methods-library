@@ -1,1 +1,1 @@
-"""Statistical foundations developed alongside the seven course notebooks."""
+"""Statistical foundations developed alongside the course notebooks."""
