@@ -12,7 +12,7 @@ Probability and statistical methods for finance, developed through mathematical 
 | [02](notebooks/02_multivariate_random_variables.ipynb) | Multivariate random variables through bivariate illustrations |
 | [03](notebooks/03_statistical_inference_and_mle.ipynb) | Estimator properties, frequentist inference, MLE and model comparison |
 | [04](notebooks/04_nonparametric_distributions.ipynb) | Empirical distributions, density estimates and QQ plots |
-| [05](notebooks/05_returns_losses_and_financial_risk.ipynb) | Returns, losses and financial risk |
+| [05](notebooks/05_returns_losses_and_financial_risk.ipynb) | Returns, losses, VaR/ES and finite-sample risk uncertainty |
 | [06](notebooks/06_empirical_distributions_and_risk.ipynb) | Empirical distributions and risk in US/German markets |
 | [07](notebooks/07_stochastic_processes_and_time_series_foundations.ipynb) | Stochastic processes and time-series foundations |
 | [08](notebooks/08_linear_time_series_and_conditional_volatility.ipynb) | Linear time series and conditional volatility |
@@ -23,6 +23,8 @@ Read them in order. Notebook 02 introduces random vectors, marginal and conditio
 Notebook 03 distinguishes bias, consistency and sampling uncertainty, then introduces frequentist tests and confidence intervals. Its Gaussian example tests the mean and standard deviation with unknown variance. The MLE section covers closed-form and numerical solutions, asymptotic inference, and AIC/BIC model comparison.
 
 Notebook 04 develops histograms, kernel density estimates, the ECDF and empirical quantiles. Its final QQ illustration compares one simulated Laplace sample with four parametric candidates, showing why Student-t and Laplace can be difficult to distinguish over a finite observed range.
+
+Notebook 05 connects returns and losses to population VaR and Expected Shortfall, then examines historical estimates and their sampling variability. Its simulations distinguish percentage-point losses from standardized comparisons and show how sparse tail observations limit risk estimation.
 
 Notebooks 01–05 and 07 use simulated observations. Notebook 06 uses US/German market and FX snapshots, 08 includes the Mishkin inflation example, and 09 applies the time-series workflow to S&P 500 returns.
 
