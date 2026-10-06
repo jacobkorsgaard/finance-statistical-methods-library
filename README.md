@@ -10,7 +10,7 @@ Probability and statistical methods for finance, developed through mathematical 
 | --- | --- |
 | [01](notebooks/01_random_variables_and_distributions.ipynb) | Continuous univariate distributions and theoretical/empirical moments |
 | [02](notebooks/02_multivariate_random_variables.ipynb) | Multivariate random variables through bivariate illustrations |
-| [03](notebooks/03_statistical_inference_and_mle.ipynb) | Frequentist inference and MLE across parametric models |
+| [03](notebooks/03_statistical_inference_and_mle.ipynb) | Estimator properties, frequentist inference, MLE and model comparison |
 | [04](notebooks/04_nonparametric_distributions.ipynb) | Empirical distributions, density estimates and QQ plots |
 | [05](notebooks/05_returns_losses_and_financial_risk.ipynb) | Returns, losses and financial risk |
 | [06](notebooks/06_empirical_distributions_and_risk.ipynb) | Empirical distributions and risk in US/German markets |
@@ -19,6 +19,8 @@ Probability and statistical methods for finance, developed through mathematical 
 | [09](notebooks/09_empirical_financial_time_series_case_study.ipynb) | Empirical financial time-series case study |
 
 Read them in order. Notebook 02 introduces random vectors, marginal and conditional distributions, then population and sample covariance and correlation. Section 5 illustrates linear transformations of Gaussian, Student-t and Laplace distributions. Section 6 compares bivariate density surfaces for Gaussian, Student-t, symmetric Laplace and skew-normal distributions. Portfolio applications remain in the later finance notebook.
+
+Notebook 03 distinguishes bias, consistency and sampling uncertainty, then introduces frequentist tests and confidence intervals. Its Gaussian example tests the mean and standard deviation with unknown variance. The MLE section covers closed-form and numerical solutions, asymptotic inference, and AIC/BIC model comparison.
 
 Notebooks 01–05 and 07 use simulated observations. Notebook 06 uses US/German market and FX snapshots, 08 includes the Mishkin inflation example, and 09 applies the time-series workflow to S&P 500 returns.
 
