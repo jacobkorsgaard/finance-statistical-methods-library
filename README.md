@@ -8,27 +8,25 @@ Probability and statistical methods for finance, developed through mathematical 
 
 | Notebook | Topic |
 | --- | --- |
-| [01](notebooks/01_random_variables_and_distributions.ipynb) | Continuous univariate distributions and theoretical/empirical moments |
-| [02](notebooks/02_multivariate_random_variables.ipynb) | Multivariate random variables through bivariate illustrations |
+| [00](notebooks/00_financial_returns_as_distributions.ipynb) | From prices and returns to probability models and downside-risk questions |
+| [01](notebooks/01_univariate_distributions.ipynb) | Univariate distributions, moments and population tail properties |
+| [02](notebooks/02_multivariate_distributions.ipynb) | Multivariate random variables through bivariate illustrations |
 | [03](notebooks/03_statistical_inference_and_mle.ipynb) | Estimator properties, frequentist inference, MLE and model comparison |
-| [04](notebooks/04_nonparametric_distributions.ipynb) | Empirical distributions, density estimates and QQ plots |
-| [05](notebooks/05_returns_losses_and_financial_risk.ipynb) | Returns, losses, VaR/ES and finite-sample risk uncertainty |
-| [06](notebooks/06_empirical_distributions_and_risk.ipynb) | Application of distributions to equity and bond returns |
-| [07](notebooks/07_stochastic_processes_and_time_series_foundations.ipynb) | Stochastic processes and time-series foundations |
-| [08](notebooks/08_linear_time_series_and_conditional_volatility.ipynb) | Linear time series and conditional volatility |
-| [09](notebooks/09_empirical_financial_time_series_case_study.ipynb) | Empirical financial time-series case study |
+| [04](notebooks/04_nonparametric_distributions.ipynb) | Empirical distributions, QQ plots and finite-sample tail estimates |
+| [05](notebooks/05_example_application_of_distributions.ipynb) | Example: Application of Distribution Models to Equity and Bond Returns |
+| [06](notebooks/06_stochastic_processes_and_time_series_foundations.ipynb) | From temporal ordering to stochastic-process foundations |
+| [07](notebooks/07_linear_time_series_and_conditional_volatility.ipynb) | Linear time series and conditional volatility |
+| [08](notebooks/08_empirical_financial_time_series_case_study.ipynb) | Empirical financial time-series case study |
 
-Read them in order. Notebook 02 introduces random vectors, marginal and conditional distributions, then population and sample covariance and correlation. Section 5 illustrates linear transformations of Gaussian, Student-t and Laplace distributions. Section 6 compares bivariate density surfaces for Gaussian, Student-t, symmetric Laplace and skew-normal distributions. Portfolio applications remain in the later finance notebook.
+Start with Notebook 00: calculate returns, distinguish an uncertain return from its observed realizations, and introduce expected return, dispersion and downside loss. The same SPY observations appear as a realized history and a pooled histogram. A separate hypothetical loss illustration introduces VaR and ES without assuming the market distribution is known.
 
-Notebook 03 distinguishes bias, consistency and sampling uncertainty, then introduces frequentist tests and confidence intervals. Its Gaussian example tests the mean and standard deviation with unknown variance. The MLE section covers closed-form and numerical solutions, asymptotic inference, and AIC/BIC model comparison.
+Notebooks 01–03 develop probability distributions and inference. Expectation and variance remain general distributional properties. Notebook 01 also derives population tail quantiles and expectations; Notebook 04 obtains their empirical counterparts and examines sparse-tail sampling variability. The former standalone returns/risk notebook has been distributed across 00, 01 and 04, preserving its derivations and simulations.
 
-Notebook 04 develops histograms, kernel density estimates, the ECDF and empirical quantiles. Its final QQ illustration compares one simulated Laplace sample with four parametric candidates, showing why Student-t and Laplace can be difficult to distinguish over a finite observed range.
+Notebook 05 applies these tools to USD equity exposure (SPY) and broad investment-grade bond exposure (AGG). Models are estimated and selected on 2017–2022, then evaluated against 2023–2025 observations without refitting. Separate fits and joint-model marginals are compared with the empirical baseline. No description performs best on every evaluated measure in this period. Conditional distributions and linear combinations remain deferred.
 
-Notebook 05 connects returns and losses to population VaR and Expected Shortfall, then examines historical estimates and their sampling variability. Its simulations distinguish percentage-point losses from standardized comparisons and show how sparse tail observations limit risk estimation.
+Notebook 06 returns to temporal ordering. Reordering identical observations preserves their empirical distribution and historical VaR/ES but changes their placement in time. The stochastic-process foundations lead to conditional-mean and conditional-variance models in 07, then their empirical application in 08. Out-of-sample discrepancies alone do not establish temporal dependence.
 
-Notebook 06 applies the earlier tools separately to S&P 500 equity exposure (SPY) and broad US bond exposure (AGG), then to their equity–bond vector. The univariate cases fit and select models on 2017–2022, then compare frozen parametric and training-empirical predictions with 2023–2025 moments, quantile behavior and loss tails. The bivariate case uses the same split, compares likelihood-fitted joint Gaussian, Student-t and skew-normal models using AIC/BIC, and evaluates implied marginal returns and 5% VaR/ES, then compares them with the standalone univariate fits and empirical baseline. Conditional distributions and linear combinations are deferred. These are USD fund total-return proxies, with fixed local inputs and no portfolio optimization.
-
-Notebooks 01–05 and 07 use simulated observations. Notebook 06 uses distribution-adjusted SPY and AGG snapshots, 08 includes the Mishkin inflation example, and 09 applies the time-series workflow to S&P 500 returns.
+All observations come from reproducible simulations or fixed local snapshots. Notebook 07 retains the course inflation example, and 08 retains the existing S&P 500 capstone. No notebook requires execution-time downloads.
 
 ## Setup and verification
 
@@ -46,7 +44,7 @@ On Windows, activate with `.venv\Scripts\Activate.ps1`. Select this environment 
 To execute one notebook and save its outputs:
 
 ```bash
-python -m nbconvert --to notebook --execute --inplace notebooks/01_random_variables_and_distributions.ipynb
+python -m nbconvert --to notebook --execute --inplace notebooks/01_univariate_distributions.ipynb
 ```
 
 All empirical data are fixed local snapshots, so notebook execution requires no network access. [Data documentation](data/README.md) records sources, windows, units, currencies, preprocessing and checksums.
