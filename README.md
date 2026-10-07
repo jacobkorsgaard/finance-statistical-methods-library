@@ -2,7 +2,7 @@
 
 Probability and statistical methods for finance, developed through mathematical explanations, reproducible simulations and empirical applications. The notebooks are supported by tested Python functions.
 
-**Early draft:** all nine notebooks execute, and the full suite contains 383 passing tests. The mathematical exposition, course fidelity and cross-notebook consistency remain under review.
+**Early draft:** all nine notebooks execute, and the library includes tested statistical functions. The mathematical exposition, course fidelity and cross-notebook consistency remain under review.
 
 ## Notebooks
 
@@ -13,7 +13,7 @@ Probability and statistical methods for finance, developed through mathematical 
 | [03](notebooks/03_statistical_inference_and_mle.ipynb) | Estimator properties, frequentist inference, MLE and model comparison |
 | [04](notebooks/04_nonparametric_distributions.ipynb) | Empirical distributions, density estimates and QQ plots |
 | [05](notebooks/05_returns_losses_and_financial_risk.ipynb) | Returns, losses, VaR/ES and finite-sample risk uncertainty |
-| [06](notebooks/06_empirical_distributions_and_risk.ipynb) | Empirical distributions and risk in US/German markets |
+| [06](notebooks/06_empirical_distributions_and_risk.ipynb) | Application of distributions to equity and bond returns |
 | [07](notebooks/07_stochastic_processes_and_time_series_foundations.ipynb) | Stochastic processes and time-series foundations |
 | [08](notebooks/08_linear_time_series_and_conditional_volatility.ipynb) | Linear time series and conditional volatility |
 | [09](notebooks/09_empirical_financial_time_series_case_study.ipynb) | Empirical financial time-series case study |
@@ -26,7 +26,9 @@ Notebook 04 develops histograms, kernel density estimates, the ECDF and empirica
 
 Notebook 05 connects returns and losses to population VaR and Expected Shortfall, then examines historical estimates and their sampling variability. Its simulations distinguish percentage-point losses from standardized comparisons and show how sparse tail observations limit risk estimation.
 
-Notebooks 01–05 and 07 use simulated observations. Notebook 06 uses US/German market and FX snapshots, 08 includes the Mishkin inflation example, and 09 applies the time-series workflow to S&P 500 returns.
+Notebook 06 applies the earlier tools separately to S&P 500 equity exposure (SPY) and broad US bond exposure (AGG), then to their equity–bond vector. The univariate cases fit and select models on 2017–2022, then compare frozen parametric and training-empirical predictions with 2023–2025 moments, quantile behavior and loss tails. The bivariate case uses the same split, compares likelihood-fitted joint Gaussian, Student-t and skew-normal models using AIC/BIC, and evaluates implied marginal returns and 5% VaR/ES, then compares them with the standalone univariate fits and empirical baseline. Conditional distributions and linear combinations are deferred. These are USD fund total-return proxies, with fixed local inputs and no portfolio optimization.
+
+Notebooks 01–05 and 07 use simulated observations. Notebook 06 uses distribution-adjusted SPY and AGG snapshots, 08 includes the Mishkin inflation example, and 09 applies the time-series workflow to S&P 500 returns.
 
 ## Setup and verification
 

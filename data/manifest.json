@@ -107,5 +107,43 @@
     "start": "2017-01-02",
     "end": "2025-12-31",
     "missing_close_rows_removed": 8
+  },
+  {
+    "file": "spy_adjusted_prices_2017_2025.csv",
+    "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?period1=1483228800&period2=1767225600&interval=1d",
+    "sha256": "a875a416b394ed99274e42f1472b2f61f6cc002e3bf3aebbcd42d5b802b6d2eb",
+    "rows": 2262,
+    "columns": [
+      "Date",
+      "Close",
+      "AdjustedClose"
+    ],
+    "retrieved_utc": "2026-10-06",
+    "ticker": "SPY",
+    "units": "USD",
+    "series_type": "ETF adjusted close",
+    "timezone": "America/New_York",
+    "start": "2017-01-03",
+    "end": "2025-12-31",
+    "missing_close_rows_removed": 0
+  },
+  {
+    "file": "agg_adjusted_prices_2017_2025.csv",
+    "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/AGG?period1=1483228800&period2=1767225600&interval=1d",
+    "sha256": "a930d130397b02d3fb32d7e342cccd1271733a68d64b22cf0e3aef63dcf310a8",
+    "rows": 2262,
+    "columns": [
+      "Date",
+      "Close",
+      "AdjustedClose"
+    ],
+    "retrieved_utc": "2026-10-06",
+    "ticker": "AGG",
+    "units": "USD",
+    "series_type": "ETF adjusted close",
+    "timezone": "America/New_York",
+    "start": "2017-01-03",
+    "end": "2025-12-31",
+    "missing_close_rows_removed": 0
   }
 ]
