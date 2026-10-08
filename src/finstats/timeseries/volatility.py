@@ -55,8 +55,11 @@ def garch11_variance_path(residuals: ArrayLike, omega: float, alpha: float, beta
     return h
 
 
-def simulate_garch11(omega: float, alpha: float, beta: float, n: int, rng=None) -> tuple[NDArray, NDArray]:
-    """Gaussian GARCH(1,1), with population-variance initialization and 1,000 burn-in steps.
+def simulate_garch11(omega: float, alpha: float, beta: float, n: int, rng=None, *, df: float | None = None) -> tuple[NDArray, NDArray]:
+    """GARCH(1,1), with population-variance initialization and 1,000 burn-in steps.
+
+    Innovations are Gaussian by default. Optional df>2 selects Student-t
+    innovations scaled by sqrt((df-2)/df) to have unit variance.
 
     Burn-in approximates stationary initialization; it is not an exact draw from
     the stationary joint law. Higher moment existence is not assumed.
@@ -65,7 +68,13 @@ def simulate_garch11(omega: float, alpha: float, beta: float, n: int, rng=None) 
     _positive_size(n)
     rng = np.random.default_rng(rng)
     total = n+1000
-    innovations = rng.normal(size=total)
+    if df is None:
+        innovations = rng.normal(size=total)
+    else:
+        df = _finite_scalar(df, "df")
+        if df <= 2:
+            raise ValueError("df must exceed 2 for unit-variance Student-t innovations")
+        innovations = rng.standard_t(df, size=total)*np.sqrt((df-2)/df)
     h = np.empty(total)
     a = np.empty(total)
     h[0] = garch11_unconditional_variance(omega,alpha,beta)

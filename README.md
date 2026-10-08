@@ -2,7 +2,7 @@
 
 Probability and statistical methods for finance, developed through mathematical explanations, reproducible simulations and empirical applications. The notebooks are supported by tested Python functions.
 
-**Early draft:** all nine notebooks execute, and the library includes tested statistical functions. The mathematical exposition, course fidelity and cross-notebook consistency remain under review.
+**Early draft:** the distribution notebooks are followed by a time-series curriculum. Notebooks 06–10 execute independently, and the library includes tested statistical functions. The existing empirical capstone is preserved for later review. The mathematical exposition, course fidelity and cross-notebook consistency remain under review.
 
 ## Notebooks
 
@@ -14,9 +14,12 @@ Probability and statistical methods for finance, developed through mathematical 
 | [03](notebooks/03_statistical_inference_and_mle.ipynb) | Estimator properties, frequentist inference, MLE and model comparison |
 | [04](notebooks/04_nonparametric_distributions.ipynb) | Empirical distributions, QQ plots and finite-sample tail estimates |
 | [05](notebooks/05_example_application_of_distributions.ipynb) | Example: Application of Distribution Models to Equity and Bond Returns |
-| [06](notebooks/06_stochastic_processes_and_time_series_foundations.ipynb) | From temporal ordering to stochastic-process foundations |
-| [07](notebooks/07_linear_time_series_and_conditional_volatility.ipynb) | Linear time series and conditional volatility |
-| [08](notebooks/08_empirical_financial_time_series_case_study.ipynb) | Empirical financial time-series case study |
+| [06](notebooks/06_stochastic_processes_and_time_series.ipynb) | Stochastic processes, realized time series and population/sample properties |
+| [07](notebooks/07_stationary_and_nonstationary_processes.ipynb) | Stationarity, ergodicity, stationary noise and stochastic trends |
+| [08](notebooks/08_linear_time_series_models.ipynb) | Linear time-series models: AR, MA, ARMA/ARIMA, estimation, diagnostics and forecasting |
+| [09](notebooks/09_conditional_volatility_models.ipynb) | Conditional volatility: ARCH/GARCH, estimation, diagnostics and forecasting |
+| [10](notebooks/10_combined_mean_and_volatility_models.ipynb) | Combining conditional means and volatility; joint AR–GARCH example |
+| [11](notebooks/11_empirical_financial_time_series_case_study.ipynb) | Example: time-series models for S&P 500 returns |
 
 Start with Notebook 00: calculate returns, distinguish an uncertain return from its observed realizations, and introduce expected return, dispersion and downside loss. The same SPY observations appear as a realized history and a pooled histogram. A separate hypothetical loss illustration introduces VaR and ES without assuming the market distribution is known.
 
@@ -24,9 +27,9 @@ Notebooks 01–03 develop probability distributions and inference. Expectation a
 
 Notebook 05 applies these tools to USD equity exposure (SPY) and broad investment-grade bond exposure (AGG). Models are estimated and selected on 2017–2022, then evaluated against 2023–2025 observations without refitting. Separate fits and joint-model marginals are compared with the empirical baseline. No description performs best on every evaluated measure in this period. Conditional distributions and linear combinations remain deferred.
 
-Notebook 06 returns to temporal ordering. Reordering identical observations preserves their empirical distribution and historical VaR/ES but changes their placement in time. The stochastic-process foundations lead to conditional-mean and conditional-variance models in 07, then their empirical application in 08. Out-of-sample discrepancies alone do not establish temporal dependence.
+Notebook 06 introduces stochastic processes, realized time series, and their population and sample properties. Notebook 07 establishes stationarity and ergodicity. Notebook 08 develops conditional-mean models, 09 develops conditional variance, and 10 combines them. Notebook 11 adapts the course’s S&P 500 workflow to the same adjusted SPY returns and 2017–2022 / 2023–2025 split as Notebook 05, comparing fixed and conditional models. Out-of-sample discrepancies alone do not establish temporal dependence.
 
-All observations come from reproducible simulations or fixed local snapshots. Notebook 07 retains the course inflation example, and 08 retains the existing S&P 500 capstone. No notebook requires execution-time downloads.
+All observations come from reproducible simulations or fixed local snapshots. Notebook 08 uses simulated processes, and 11 uses the saved adjusted SPY snapshot. No notebook requires execution-time downloads.
 
 ## Setup and verification
 

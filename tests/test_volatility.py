@@ -95,3 +95,18 @@ def test_path_invalid_residuals_and_parameters():
     for args in [(0,.1,.8),(1,-.1,.8),(1,.1,-.1)]:
         with pytest.raises(ValueError): garch11_forecast(1,1,*args)
         with pytest.raises(ValueError): garch11_variance_path([1],*args,initial_variance=1)
+
+
+def test_student_innovations_are_standardized_and_aligned():
+    a, h = simulate_garch11(1, 0, 0, 80, rng=42, df=5)
+    expected = np.random.default_rng(42).standard_t(5, 1080)[1000:] * np.sqrt(3/5)
+    np.testing.assert_array_equal(a, expected)
+    np.testing.assert_array_equal(h, np.ones(80))
+    a, h = simulate_garch11(.05, .05, .9, 80, rng=42, df=5)
+    np.testing.assert_allclose(h[1:], .05+.05*a[:-1]**2+.9*h[:-1])
+
+
+@pytest.mark.parametrize("df", [1, 2, np.nan, np.inf])
+def test_student_simulation_requires_finite_variance(df):
+    with pytest.raises(ValueError):
+        simulate_garch11(1, 0, 0, 10, df=df)

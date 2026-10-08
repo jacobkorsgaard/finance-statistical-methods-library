@@ -14,3 +14,5 @@ The original four test modules remain unchanged and cover the preserved package.
 `test_data_snapshots.py` verifies every fixed CSV against its recorded SHA-256, schema and row count. It checks the US/German price-index and FX metadata, date ordering, positive levels, fixed window, and the shared price calendar used in Notebook 05. These checks are offline. Statistical functions used by 00–05 retain their existing descriptive, nonparametric, risk, return, multivariate, and distribution-fit tests.
 
 `test_multivariate_laplace.py` checks the bivariate symmetric Laplace density against its Gaussian–exponential mixture, radial mass and second moment, univariate marginal and affine Jacobian, plus vectorization, singular-center and input-domain behavior.
+
+`test_timeseries_composite.py` checks the combined AR(1)–GARCH(1,1) simulator: aligned mean/variance recursions, reproducibility, the zero-AR special case, stationary population moments and invalid inputs.
