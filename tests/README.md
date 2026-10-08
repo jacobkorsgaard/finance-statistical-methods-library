@@ -16,3 +16,7 @@ The original four test modules remain unchanged and cover the preserved package.
 `test_multivariate_laplace.py` checks the bivariate symmetric Laplace density against its Gaussian–exponential mixture, radial mass and second moment, univariate marginal and affine Jacobian, plus vectorization, singular-center and input-domain behavior.
 
 `test_timeseries_composite.py` checks the combined AR(1)–GARCH(1,1) simulator: aligned mean/variance recursions, reproducibility, the zero-AR special case, stationary population moments and invalid inputs.
+
+`test_timeseries_joint.py` checks conditional joint ARMA–GARCH estimation: single- and multiple-lag hand recursions, causal filtering with fixed initialization, Gaussian/Student-t likelihood agreement, predictive means/variances, reproducibility and invalid variance parameters.
+
+`test_timeseries_rolling.py` checks expanding-window joint-model parameter refits, forecast causality, warm starts, saved-result integrity and cache invalidation.
