@@ -1,1 +1,5 @@
-"""Time-series diagnostic: arch effects (planned)."""
+"""Unimplemented scaffold: Time-series diagnostic: arch effects.
+
+This module exports no statistical functions. See the README for implemented
+interfaces; its presence does not imply that this method is available here.
+"""

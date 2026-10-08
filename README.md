@@ -1,6 +1,6 @@
 # Finance Statistical Methods Library
 
-Probability and statistical methods for finance, developed through mathematical explanations, reproducible simulations and empirical applications. The notebooks are supported by tested Python functions.
+An educational collection connecting financial statistical theory with reproducible Python examples and empirical applications. It is written for quantitatively trained readers who want to understand model assumptions, implement analyses and evaluate their results. The notebooks combine established scientific Python libraries with tested reusable functions developed for this project.
 
 **First complete draft:** Notebooks 00–11 form a connected progression from financial returns and probability distributions to inference, temporal models and empirical evaluation. Both applications are implemented, with saved notebook outputs and tested reusable Python functions. A final editorial and mathematical review remains before declaring a stable release.
 
@@ -33,6 +33,40 @@ The empirical conclusion is deliberately measured: better in-sample fit and chan
 
 All observations come from reproducible simulations or fixed local snapshots. Notebook 08 uses simulated processes, and 11 uses the saved adjusted SPY snapshot. No notebook requires execution-time downloads.
 
+## Implementation and reusable functions
+
+The project’s contribution is the connected exposition, explicit assumptions, reproducible simulations and financial applications. The code includes both direct implementations of statistical formulas and small interfaces around established libraries:
+
+| Component | Approach |
+| --- | --- |
+| Arrays, tabular data and figures | NumPy, pandas and Matplotlib |
+| Distribution densities, quantiles and standard fits | SciPy, with project interfaces for consistent fit summaries |
+| Linear time-series estimation | statsmodels; pmdarima provides automatic ARIMA order comparison |
+| ARCH/GARCH estimation in volatility examples | `arch` |
+| Simulations, empirical summaries, risk formulas and selected diagnostics | Project functions, using NumPy/SciPy numerical primitives |
+| Joint ARMA–GARCH estimation and expanding-window refits | Project conditional-likelihood implementation, using SciPy optimization and statsmodels parameter transformations |
+
+The custom joint estimator uses a conditional likelihood with explicit initialization. Its results and numerical uncertainty calculations should be interpreted with the assumptions documented in Notebook 11, especially near stationarity boundaries.
+
+**Implemented interfaces:** `finstats` contains the functions supporting the current notebook sequence, including descriptive statistics, inference, distribution calculations, simulations, diagnostics and risk. The `finance_statistical_methods` namespace preserves existing return, distribution-fitting, empirical-distribution and risk interfaces. It also contains explicitly marked empty scaffold modules, particularly under `time_series` and `simulation`; those paths do not provide estimators or simulation functions. For reusable time-series functions, use the implemented `finstats.timeseries` modules or the external packages demonstrated in the notebooks.
+
+For example, calculate empirical 5% loss risk from simple returns:
+
+```python
+import numpy as np
+from finstats.risk import historical_var, historical_es
+
+returns = np.array([0.012, -0.025, 0.004, -0.018, 0.009,
+                    -0.040, 0.015, -0.006, 0.003, -0.011,
+                    0.007, -0.032, 0.005, -0.014, 0.020,
+                    -0.008, 0.002, -0.022, 0.010, -0.016])
+losses = -returns
+print("5% VaR:", historical_var(losses, alpha=0.05))
+print("5% ES:", historical_es(losses, alpha=0.05))
+```
+
+Inputs and outputs share the same units: these decimal returns produce decimal losses. Historical VaR uses the inverse ECDF; historical ES averages losses strictly above that threshold. With ties or sparse tails, this convention differs from integrated-quantile ES and requires at least one strict exceedance. Student-t risk functions take a scale parameter, which is not its standard deviation.
+
 ## Setup and verification
 
 Use Python 3.11 or later:
@@ -52,6 +86,8 @@ To execute one notebook and save its outputs:
 python -m nbconvert --to notebook --execute --inplace notebooks/01_univariate_distributions.ipynb
 ```
 
+The tested development environment uses Python 3.13.5 on macOS. [requirements-tested.txt](requirements-tested.txt) records the direct dependency versions used for validation; `pyproject.toml` defines the supported installation ranges. The version record is not a complete transitive dependency lock or a guarantee for every platform.
+
 The full test suite currently contains 458 passing tests. Notebook 11 has been executed top to bottom after the latest revisions.
 
 Notebook 11 verifies and reuses the saved 752 expanding-window joint-model refits. Changing the estimation inputs or implementation invalidates these records and triggers recalculation, which takes longer than the other examples; allow a longer notebook execution timeout when regenerating them.
@@ -67,6 +103,16 @@ All empirical data are fixed local snapshots, so notebook execution requires no 
 | `tests/` | Analytical, numerical and data-integrity checks |
 | `data/` | Documented reproducible data snapshots |
 | `artifacts/notebook11/` | Verified rolling-refit records and calculation documentation |
+
+## Sources and further reading
+
+The primary teaching reference is Stefano Tonellato’s *Statistical Models and Methods for Finance* course slides, Università Ca’ Foscari Venezia. Course notation, examples and parameterizations guide the exposition; R examples are translated into Python where practical. Additional explanations and implementation choices are the repository author’s responsibility. The local course slides and books are not distributed with this repository.
+
+Supporting reading:
+
+- David Ruppert and David S. Matteson, *Statistics and Data Analysis for Financial Engineering: with R Examples* (2015), for financial distributions, empirical methods and time-series applications. [Publisher page](https://link.springer.com/book/10.1007/978-1-4939-2614-5).
+- George Casella and Roger L. Berger, *Statistical Inference*, second edition, for probability models, estimation and hypothesis testing. [Publisher page](https://www.cengage.com/c/statistical-inference-2e-casella/9780534243128/).
+- Larry Wasserman, *All of Statistics: A Concise Course in Statistical Inference* (2004), for a concise treatment of inference and nonparametric methods. [Publisher page](https://link.springer.com/book/10.1007/978-0-387-21736-9).
 
 ## Acknowledgement
 

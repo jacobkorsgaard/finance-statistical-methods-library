@@ -1,1 +1,5 @@
-"""Conditional volatility model: GARCH (planned)."""
+"""Unimplemented scaffold: Conditional volatility model: GARCH.
+
+This module exports no statistical functions. See the README for implemented
+interfaces; its presence does not imply that this method is available here.
+"""
