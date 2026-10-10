@@ -1,4 +1,4 @@
-# Finance Statistical Methods Library
+# Statistical Methods for Finance
 
 An educational collection connecting financial statistical theory with reproducible Python examples and empirical applications. It is written for quantitatively trained readers who want to understand model assumptions, implement analyses and evaluate their results. The notebooks demonstrate established scientific Python libraries alongside a focused collection of tested, reusable implementations. This is an educational reference rather than a comprehensive statistics package.
 
