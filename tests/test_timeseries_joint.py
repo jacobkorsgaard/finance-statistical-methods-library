@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from scipy import stats
 from scipy.signal import lfilter
-from finstats.timeseries.joint import filter_arma_garch, fit_arma_garch, JointARMAGARCHFit
+from finstats.joint import filter_arma_garch, fit_arma_garch, JointARMAGARCHFit
 
 
 def test_filter_matches_hand_recursion_and_is_causal():
@@ -94,7 +94,7 @@ def test_higher_order_joint_mle_and_order_validation():
 
 
 def test_sandwich_standard_errors_match_analytical_gaussian_scores():
-    from finstats.timeseries.joint import _wald_inference
+    from finstats.joint import _wald_inference
     x=np.random.default_rng(9).normal(.4,1.3,600)
     mu=x.mean();sigma=np.sqrt(np.mean((x-mu)**2));centered=x-mu
     errors,pvalues,status=_wald_inference(lambda theta:stats.norm.logpdf(x,theta[0],theta[1]),[mu,sigma])
@@ -108,7 +108,7 @@ def test_sandwich_standard_errors_match_analytical_gaussian_scores():
 
 
 def test_singular_inference_is_unavailable():
-    from finstats.timeseries.joint import _wald_inference
+    from finstats.joint import _wald_inference
     errors,pvalues,status=_wald_inference(lambda theta:np.ones(10),[1.,2.])
     assert np.isnan(errors).all() and np.isnan(pvalues).all()
     assert status.startswith('Unavailable')

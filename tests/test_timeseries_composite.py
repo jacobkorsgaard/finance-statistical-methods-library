@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from finstats.timeseries.composite import simulate_ar1_garch11
+from finstats.simulation import simulate_ar1_garch11
 
 
 def test_aligned_mean_and_variance_recursions():

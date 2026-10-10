@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 from scipy import stats
 from scipy.integrate import quad
-from finstats.nonparametric import empirical_cdf, empirical_quantile, qq_data
+from finstats.empirical import empirical_cdf, empirical_quantile, qq_data
 from finstats.risk import (
     historical_var, historical_es, gaussian_var, gaussian_es, student_t_var, student_t_es,
 )

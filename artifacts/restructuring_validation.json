@@ -1,0 +1,80 @@
+{
+  "purpose": "Version 0.2 source consolidation regression check",
+  "baseline_commit": "8dd8e21",
+  "notebooks_executed": 12,
+  "markdown_cells_preserved": 190,
+  "numerical_tolerance": {
+    "rtol": 1e-10,
+    "atol": 1e-12
+  },
+  "captured_numeric_objects": 595,
+  "notebooks": {
+    "00": {
+      "compared": 7,
+      "missing": [],
+      "failed": []
+    },
+    "01": {
+      "compared": 27,
+      "missing": [],
+      "failed": []
+    },
+    "02": {
+      "compared": 54,
+      "missing": [],
+      "failed": []
+    },
+    "03": {
+      "compared": 65,
+      "missing": [],
+      "failed": []
+    },
+    "04": {
+      "compared": 28,
+      "missing": [],
+      "failed": []
+    },
+    "05": {
+      "compared": 155,
+      "missing": [],
+      "failed": []
+    },
+    "06": {
+      "compared": 5,
+      "missing": [],
+      "failed": []
+    },
+    "07": {
+      "compared": 12,
+      "missing": [],
+      "failed": []
+    },
+    "08": {
+      "compared": 30,
+      "missing": [],
+      "failed": []
+    },
+    "09": {
+      "compared": 34,
+      "missing": [],
+      "failed": []
+    },
+    "10": {
+      "compared": 52,
+      "missing": [],
+      "failed": []
+    },
+    "11": {
+      "compared": 126,
+      "missing": [],
+      "failed": []
+    }
+  },
+  "rolling_forecasts": {
+    "rows": 752,
+    "regenerated": true,
+    "csv_byte_identical": true
+  },
+  "preserved": "Notebook markdown, hierarchy, cell order, data and existing saved outputs",
+  "python": "3.13.5"
+}

@@ -1,16 +1,15 @@
-import numpy as np
-import pytest
+"""Return definitions used directly in Notebook 00."""
 
-from finance_statistical_methods.returns import gross_returns, log_returns, simple_returns
+import numpy as np
 
 
 def test_returns_basic():
-    prices = [100.0, 110.0, 99.0]
-    np.testing.assert_allclose(gross_returns(prices), [1.1, 0.9])
-    np.testing.assert_allclose(simple_returns(prices), [0.1, -0.1])
-    np.testing.assert_allclose(log_returns(prices), np.log([1.1, 0.9]))
+    prices = np.array([100.0, 110.0, 99.0])
+    gross = prices[1:] / prices[:-1]
+    np.testing.assert_allclose(gross, [1.1, 0.9])
+    np.testing.assert_allclose(gross - 1, [0.1, -0.1])
+    np.testing.assert_allclose(np.log(gross), np.log([1.1, 0.9]))
 
 
-def test_returns_reject_nonpositive_prices():
-    with pytest.raises(ValueError):
-        simple_returns([100.0, 0.0])
+def test_dividend_is_part_of_total_return():
+    np.testing.assert_allclose((105 + 2) / 100 - 1, 0.07)

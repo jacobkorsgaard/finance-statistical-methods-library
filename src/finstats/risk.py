@@ -7,9 +7,9 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 from scipy import stats
-from .descriptive import _sample
-from .inference import _finite_scalar
-from .nonparametric import empirical_quantile
+from ._validation import _sample
+from ._validation import _finite_scalar
+from .empirical import empirical_quantile
 
 
 def _alpha(alpha: float) -> float:

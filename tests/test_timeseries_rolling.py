@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 from scipy.signal import lfilter
-from finstats.timeseries.joint import fit_arma_garch
-from finstats.timeseries.rolling import expanding_arma_garch_forecasts
+from finstats.joint import fit_arma_garch
+from finstats.rolling import expanding_arma_garch_forecasts
 
 
 def test_expanding_refits_are_causal_and_cached_records_match(tmp_path):

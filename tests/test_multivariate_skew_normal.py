@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 from scipy import integrate, stats
-from finstats.multivariate_skew_normal import (
+from finstats.multivariate import (
     multivariate_skew_normal_logpdf as logpdf,
     multivariate_skew_normal_moments as moments,
     multivariate_skew_normal_rvs as rvs,
@@ -83,7 +83,7 @@ def test_sampling_size_validation(size):
 
 def test_failed_starts_raise(monkeypatch):
     from types import SimpleNamespace
-    import finstats.multivariate_skew_normal as module
+    import finstats.multivariate as module
     monkeypatch.setattr(module.optimize,'minimize',lambda fun,x,**kwargs:
         SimpleNamespace(fun=fun(x),x=x,success=False,message='failed'))
     with pytest.raises(RuntimeError,match='all skew-normal'):

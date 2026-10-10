@@ -1,13 +1,10 @@
 import pytest
-
-from finance_statistical_methods.distributions.nonparametric import ecdf, empirical_quantile
+from finstats.empirical import empirical_cdf, empirical_quantile
 
 
 def test_ecdf():
-    sample = [1, 2, 3, 4]
-    assert ecdf(sample, 2) == pytest.approx(0.5)
+    assert empirical_cdf([1, 2, 3, 4])(2) == pytest.approx(0.5)
 
 
 def test_empirical_quantile_uses_inverse_ecdf():
-    sample = [1, 2, 3, 4]
-    assert empirical_quantile(sample, 0.75) == 3.0
+    assert empirical_quantile([1, 2, 3, 4], 0.75) == 3

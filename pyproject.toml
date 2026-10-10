@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "finance-statistical-methods-library"
-version = "0.1.0"
-description = "Statistical methods for finance: distributions, time series, diagnostics, simulation, and risk."
+version = "0.2.0"
+description = "Educational finance notebooks with focused reusable statistical implementations."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -30,6 +30,7 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["finstats*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,6 +1,6 @@
 # Finance Statistical Methods Library
 
-An educational collection connecting financial statistical theory with reproducible Python examples and empirical applications. It is written for quantitatively trained readers who want to understand model assumptions, implement analyses and evaluate their results. The notebooks combine established scientific Python libraries with tested reusable functions developed for this project.
+An educational collection connecting financial statistical theory with reproducible Python examples and empirical applications. It is written for quantitatively trained readers who want to understand model assumptions, implement analyses and evaluate their results. The notebooks demonstrate established scientific Python libraries alongside a focused collection of tested, reusable implementations. This is an educational reference rather than a comprehensive statistics package.
 
 **First complete draft:** Notebooks 00–11 form a connected progression from financial returns and probability distributions to inference, temporal models and empirical evaluation. Both applications are implemented, with saved notebook outputs and tested reusable Python functions. A final editorial and mathematical review remains before declaring a stable release.
 
@@ -35,7 +35,7 @@ All observations come from reproducible simulations or fixed local snapshots. No
 
 ## Implementation and reusable functions
 
-The project’s contribution is the connected exposition, explicit assumptions, reproducible simulations and financial applications. The code includes both direct implementations of statistical formulas and small interfaces around established libraries:
+The project’s contribution is the connected exposition, explicit assumptions, reproducible simulations and financial applications. Standard statistics, inference and forecast-error calculations are shown directly in the notebooks. Custom source modules are retained where their conventions or algorithms support reusable analyses:
 
 | Component | Approach |
 | --- | --- |
@@ -43,12 +43,25 @@ The project’s contribution is the connected exposition, explicit assumptions, 
 | Distribution densities, quantiles and standard fits | SciPy, with project interfaces for consistent fit summaries |
 | Linear time-series estimation | statsmodels; pmdarima provides automatic ARIMA order comparison |
 | ARCH/GARCH estimation in volatility examples | `arch` |
-| Simulations, empirical summaries, risk formulas and selected diagnostics | Project functions, using NumPy/SciPy numerical primitives |
+| Simulations, empirical-distribution conventions and risk formulas | Focused project functions using NumPy/SciPy |
+| Conventional diagnostics | statsmodels, with small interfaces preserving notebook conventions |
+| Multivariate Student-t and skew-normal estimation; bivariate Laplace density | Project implementations using SciPy evaluation/optimization |
 | Joint ARMA–GARCH estimation and expanding-window refits | Project conditional-likelihood implementation, using SciPy optimization and statsmodels parameter transformations |
 
 The custom joint estimator uses a conditional likelihood with explicit initialization. Its results and numerical uncertainty calculations should be interpreted with the assumptions documented in Notebook 11, especially near stationarity boundaries.
 
-**Implemented interfaces:** `finstats` contains the functions supporting the current notebook sequence, including descriptive statistics, inference, distribution calculations, simulations, diagnostics and risk. The `finance_statistical_methods` namespace preserves existing return, distribution-fitting, empirical-distribution and risk interfaces. It also contains explicitly marked empty scaffold modules, particularly under `time_series` and `simulation`; those paths do not provide estimators or simulation functions. For reusable time-series functions, use the implemented `finstats.timeseries` modules or the external packages demonstrated in the notebooks.
+**One namespace:** all reusable project functions live under `finstats`. The obsolete namespace, compatibility wrappers and empty scaffolds have been removed. This changes old import paths in version 0.2; the [Python API guide](PYTHON_API.md) documents migration and standard-library replacements.
+
+The [Python API guide](PYTHON_API.md) covers Gaussian, Student-t, Laplace, lognormal and skew-normal models, supported multivariate counterparts, empirical methods, inference, linear/volatility models, diagnostics, simulations and financial risk. It distinguishes custom functions from third-party methods and records their parameterizations, units and limitations.
+
+| Module | Purpose |
+| --- | --- |
+| `finstats.fitting` | Comparable summaries of SciPy univariate fits |
+| `finstats.multivariate`, `finstats.multivariate_fit` | Custom joint distributions and multivariate estimators |
+| `finstats.empirical`, `finstats.risk` | Explicit ECDF/QQ conventions and tail-risk calculations |
+| `finstats.linear`, `finstats.volatility`, `finstats.simulation` | Known-parameter checks, recursions and reproducible process simulations |
+| `finstats.diagnostics` | Dependence diagnostics with explicit conventions |
+| `finstats.joint`, `finstats.rolling` | Joint ARMA–GARCH estimation and causal expanding-window forecasting |
 
 For example, calculate empirical 5% loss risk from simple returns:
 
@@ -88,7 +101,7 @@ python -m nbconvert --to notebook --execute --inplace notebooks/01_univariate_di
 
 The tested development environment uses Python 3.13.5 on macOS. [requirements-tested.txt](requirements-tested.txt) records the direct dependency versions used for validation; `pyproject.toml` defines the supported installation ranges. The version record is not a complete transitive dependency lock or a guarantee for every platform.
 
-The full test suite currently contains 458 passing tests. Notebook 11 has been executed top to bottom after the latest revisions.
+All twelve notebooks were executed during the version 0.2 restructuring and their captured numerical results matched the saved pre-change baseline within tight floating-point tolerance. The 269 passing tests cover retained custom algorithms, mathematical conventions, data integrity and the API guide examples; obsolete-wrapper contract tests have been removed. See [test documentation](tests/README.md) and the [numerical validation record](artifacts/restructuring_validation.json).
 
 Notebook 11 verifies and reuses the saved 752 expanding-window joint-model refits. Changing the estimation inputs or implementation invalidates these records and triggers recalculation, which takes longer than the other examples; allow a longer notebook execution timeout when regenerating them.
 
@@ -99,7 +112,8 @@ All empirical data are fixed local snapshots, so notebook execution requires no 
 | Location | Contents |
 | --- | --- |
 | `notebooks/` | Exposition, simulations and applications, with saved outputs |
-| `src/` | Reusable statistical functions, including preserved compatible APIs |
+| `src/finstats/` | Focused reusable implementations in a single namespace |
+| `PYTHON_API.md` | Custom interfaces and standard-library examples |
 | `tests/` | Analytical, numerical and data-integrity checks |
 | `data/` | Documented reproducible data snapshots |
 | `artifacts/notebook11/` | Verified rolling-refit records and calculation documentation |
