@@ -354,7 +354,7 @@ Out-of-sample evaluation keeps forecasts separate from realizations. ME is `np.m
 
 ## 9. Namespace migration and verification
 
-Version 0.2 consolidates all reusable project code under `finstats`. There are no compatibility adapters or empty package scaffolds. The distribution package's installation name remains `finance-statistical-methods-library`.
+Version 0.2 consolidates all reusable project code under `finstats`. There are no compatibility adapters or empty package scaffolds. The distribution package's installation name is `statistical-methods-for-finance`; the Python namespace remains `finstats`.
 
 | Previous path | Current usage |
 | --- | --- |

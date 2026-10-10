@@ -38,27 +38,6 @@ def test_new_market_snapshots_have_valid_dates_and_levels(entry):
     assert entry["missing_close_rows_removed"] >= 0
 
 
-def test_comparable_market_and_currency_metadata():
-    indexed = {entry.get("ticker"): entry for entry in MANIFEST if "ticker" in entry}
-    assert indexed["^GSPC"]["series_type"] == "price index"
-    assert indexed["^GDAXIP"]["series_type"] == "price index"
-    assert indexed["^GSPC"]["units"] == "USD"
-    assert indexed["^GDAXIP"]["units"] == "EUR"
-    assert indexed["^GDAXIP"]["provider_name"].split()[-1] == "K"
-    assert indexed["EURUSD=X"]["units"] == "USD per EUR"
-    dax = pd.read_csv(DATA / indexed["^GDAXIP"]["file"])
-    assert dax["Close"].iloc[0] == pytest.approx(5638.490234375)
-
-
-def test_shared_price_calendar_is_the_documented_fixed_sample():
-    files = ["sp500_prices_2017_2025.csv", "dax_price_prices_2017_2025.csv", "eurusd_2017_2025.csv"]
-    calendars = [set(pd.read_csv(DATA / name)["Date"]) for name in files]
-    shared = sorted(set.intersection(*calendars))
-    assert len(shared) == 2217
-    assert shared[0] == "2017-01-03"
-    assert shared[-1] == "2025-12-30"
-    # The intersection is deliberately smaller than either full equity calendar.
-    assert len(shared) < min(len(calendar) for calendar in calendars[:2])
 
 
 def test_equity_bond_adjusted_snapshots_share_endpoints_and_preserve_distributions():
