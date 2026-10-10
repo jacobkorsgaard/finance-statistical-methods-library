@@ -31,7 +31,7 @@ Sample variance uses `ddof=1`; Gaussian MLE variance uses `ddof=0`. Skewness and
 
 ## 2. Returns, moments and standard inference
 
-[Notebooks 00](notebooks/00_financial_returns_as_distributions.ipynb) and [03](notebooks/03_statistical_inference_and_mle.ipynb) show these calculations directly. Dividend-adjusted prices already include the adjustment: do not add dividends twice.
+[Notebooks 00](notebooks/00_financial_returns.ipynb) and [03](notebooks/03_statistical_inference_and_mle.ipynb) show these calculations directly. Dividend-adjusted prices already include the adjustment: do not add dividends twice.
 
 ```python
 import numpy as np
@@ -98,11 +98,11 @@ for name, distribution in families.items():
 
 `fit_distribution(data, distribution)` accepts one of the five SciPy generators or the names `"norm"`, `"t"`, `"laplace"`, `"lognorm"`, `"skewnorm"`. It returns `params`, a frozen `distribution`, `log_likelihood`, `aic`, `bic`. Parameter labels are `mu,sigma` for Gaussian/lognormal; `mu,scale` for Laplace; `mu,scale,df` for t; `mu,scale,alpha` for skew-normal. Lognormal fitting fixes `loc=0`. The helper preserves the previous notebook fitting calls; it does not implement a new optimizer or report coefficient standard errors.
 
-AIC is `-2*log_likelihood + 2*k`; BIC is `-2*log_likelihood + np.log(n)*k`. Here k includes fitted shape, location and scale parameters, with the fixed lognormal location excluded. Compare models on the same observations, likelihood definition and units. Numerical t/skew-normal fits can reach local optima; these summaries inherit SciPy's fitting behavior. See [Notebook 01](notebooks/01_univariate_distributions.ipynb) for moments and [05](notebooks/05_example_application_of_distributions.ipynb) for model selection and out-of-sample comparison.
+AIC is `-2*log_likelihood + 2*k`; BIC is `-2*log_likelihood + np.log(n)*k`. Here k includes fitted shape, location and scale parameters, with the fixed lognormal location excluded. Compare models on the same observations, likelihood definition and units. Numerical t/skew-normal fits can reach local optima; these summaries inherit SciPy's fitting behavior. See [Notebook 01](notebooks/01_univariate_distributions.ipynb) for moments and [05](notebooks/05_case_study_financial_distribution.ipynb) for model selection and out-of-sample comparison.
 
 ## 4. Multivariate distributions
 
-[Notebook 02](notebooks/02_multivariate_distributions.ipynb) explains joint, marginal and conditional distributions and linear transformations. [Notebook 05](notebooks/05_example_application_of_distributions.ipynb) fits joint financial models.
+[Notebook 02](notebooks/02_multivariate_distributions.ipynb) explains joint, marginal and conditional distributions and linear transformations. [Notebook 05](notebooks/05_case_study_financial_distribution.ipynb) fits joint financial models.
 
 ### Gaussian and Student-t
 
@@ -164,7 +164,7 @@ Linear-combination moments use `intercept + weights @ means` and `weights @ cova
 
 ## 5. Nonparametric methods and QQ comparisons
 
-[Notebook 04](notebooks/04_nonparametric_distributions.ipynb) shows empirical distributions, KDE and model-dependent QQ comparisons.
+[Notebook 04](notebooks/04_nonparametric_methods.ipynb) shows empirical distributions, KDE and model-dependent QQ comparisons.
 
 ```python
 from finstats.empirical import empirical_cdf, empirical_quantile, qq_data
@@ -258,7 +258,7 @@ kpss_result = kpss(series, regression="c", nlags="auto")
 
 `ljung_box(x,lags,model_df=0)` delegates to statsmodels with denominator-n ACF and returns `statistic`, `p_value`, `df`, `lags`, `nobs`. Degrees of freedom are `lags−model_df`; choose a valid model adjustment. `mcleod_li(residuals,lags)` applies Ljung–Box to squared residuals, with zero model adjustment. It assesses squared dependence under its reference assumptions, including adequate moments. ARCH LM is a separate regression-based test. Heavy tails can complicate both interpretations.
 
-`standardized_residuals(residuals,conditional_volatility)` divides by **SD**, not variance, and checks aligned finite inputs and positive volatility. For combined models, examine both standardized residuals and their squares. ADF has a unit-root null; KPSS has a stationarity null determined by the regression specification. See [Notebook 07](notebooks/07_stationary_and_nonstationary_processes.ipynb).
+`standardized_residuals(residuals,conditional_volatility)` divides by **SD**, not variance, and checks aligned finite inputs and positive volatility. For combined models, examine both standardized residuals and their squares. ADF has a unit-root null; KPSS has a stationarity null determined by the regression specification. See [Notebook 07](notebooks/07_stationarity_and_nonstationarity.ipynb).
 
 ## 7. Conditional volatility and joint models
 
@@ -299,7 +299,7 @@ means, innovation_variances, predictive_paths = joint_fit.forecast(
 
 `JointARMAGARCHFit` exposes `params`, `nobs`, `aic`, `bic`, `loglikelihood`, `starts`, `inference`, `volatility_order` and the fitted parameters/history. `.filter(values=None)` returns conditional means, innovations and variances using fixed parameters and original initialization. `.forecast(...)` returns `(means, expected_innovation_variances, simulated_return_paths)` with paths `(simulations,horizon)`. At multiple steps innovation variance is not generally total return prediction-error variance; simulated paths include propagated mean uncertainty. Parameter-estimation uncertainty is not simulated.
 
-`filter_arma_garch(values,mu,ar,ma,omega,alpha,beta,initial_variance)` offers the same causal recursion for supplied parameters. Scalars or lag vectors specify alpha/beta. Initial variance and hold-back treatment matter for likelihood comparisons. Parameter transformations enforce roots/variance constraints; the t density is standardized to unit variance. Inspect all start diagnostics and boundary flags in `inference`; robust numerical uncertainty near boundaries may be unavailable or only nominal. Multiple starts do not guarantee a global maximum. The custom estimator is conditional and should not be expected to match an external package with another likelihood initialization exactly. [Notebooks 10](notebooks/10_combined_mean_and_volatility_models.ipynb) and [11](notebooks/11_empirical_financial_time_series_case_study.ipynb) show its role.
+`filter_arma_garch(values,mu,ar,ma,omega,alpha,beta,initial_variance)` offers the same causal recursion for supplied parameters. Scalars or lag vectors specify alpha/beta. Initial variance and hold-back treatment matter for likelihood comparisons. Parameter transformations enforce roots/variance constraints; the t density is standardized to unit variance. Inspect all start diagnostics and boundary flags in `inference`; robust numerical uncertainty near boundaries may be unavailable or only nominal. Multiple starts do not guarantee a global maximum. The custom estimator is conditional and should not be expected to match an external package with another likelihood initialization exactly. [Notebooks 10](notebooks/10_joint_mean_volatility_models.ipynb) and [11](notebooks/11_case_study_financial_time_series.ipynb) show its role.
 
 ### Expanding-window forecasting
 
@@ -316,7 +316,7 @@ Optional CSV/JSON checkpoints record data/source/settings signatures and CSV che
 
 ## 8. Financial tail risk and evaluation
 
-[Notebook 01](notebooks/01_univariate_distributions.ipynb) defines population risk; [04](notebooks/04_nonparametric_distributions.ipynb) explains finite-sample estimates; [05](notebooks/05_example_application_of_distributions.ipynb) and [11](notebooks/11_empirical_financial_time_series_case_study.ipynb) evaluate them out of sample.
+[Notebook 01](notebooks/01_univariate_distributions.ipynb) defines population risk; [04](notebooks/04_nonparametric_methods.ipynb) explains finite-sample estimates; [05](notebooks/05_case_study_financial_distribution.ipynb) and [11](notebooks/11_case_study_financial_time_series.ipynb) evaluate them out of sample.
 
 `alpha` denotes **tail probability**, so alpha=.05 means the 95th loss quantile. All parametric helpers take **loss-distribution** location/scale. Gaussian helpers use loss SD. Student-t helpers use t scale and df: VaR needs df>0, ES requires df>1.
 

@@ -8,18 +8,18 @@ An educational collection connecting financial statistical theory with reproduci
 
 | Notebook | Topic |
 | --- | --- |
-| [00](notebooks/00_financial_returns_as_distributions.ipynb) | From prices and returns to probability models and downside-risk questions |
+| [00](notebooks/00_financial_returns.ipynb) | From prices and returns to probability models and downside-risk questions |
 | [01](notebooks/01_univariate_distributions.ipynb) | Univariate distributions, moments and population tail properties |
 | [02](notebooks/02_multivariate_distributions.ipynb) | Multivariate random variables through bivariate illustrations |
 | [03](notebooks/03_statistical_inference_and_mle.ipynb) | Estimator properties, frequentist inference, MLE and model comparison |
-| [04](notebooks/04_nonparametric_distributions.ipynb) | Empirical distributions, QQ plots and finite-sample tail estimates |
-| [05](notebooks/05_example_application_of_distributions.ipynb) | Example: Application of Distribution Models to Equity and Bond Returns |
-| [06](notebooks/06_stochastic_processes_and_time_series.ipynb) | Stochastic processes, realized time series and population/sample properties |
-| [07](notebooks/07_stationary_and_nonstationary_processes.ipynb) | Stationarity, ergodicity, stationary noise and stochastic trends |
+| [04](notebooks/04_nonparametric_methods.ipynb) | Empirical distributions, QQ plots and finite-sample tail estimates |
+| [05](notebooks/05_case_study_financial_distribution.ipynb) | Example: Application of Distribution Models to Equity and Bond Returns |
+| [06](notebooks/06_stochastic_processes.ipynb) | Stochastic processes, realized time series and population/sample properties |
+| [07](notebooks/07_stationarity_and_nonstationarity.ipynb) | Stationarity, ergodicity, stationary noise and stochastic trends |
 | [08](notebooks/08_linear_time_series_models.ipynb) | Linear time-series models: AR, MA, ARMA/ARIMA, estimation, diagnostics and forecasting |
 | [09](notebooks/09_conditional_volatility_models.ipynb) | Conditional volatility: ARCH/GARCH, estimation, diagnostics and forecasting |
-| [10](notebooks/10_combined_mean_and_volatility_models.ipynb) | Combining conditional means and volatility; joint AR–GARCH example |
-| [11](notebooks/11_empirical_financial_time_series_case_study.ipynb) | Example: time-series models for S&P 500 returns |
+| [10](notebooks/10_joint_mean_volatility_models.ipynb) | Combining conditional means and volatility; joint AR–GARCH example |
+| [11](notebooks/11_case_study_financial_time_series.ipynb) | Example: time-series models for S&P 500 returns |
 
 Start with Notebook 00: calculate returns, distinguish an uncertain return from its observed realizations, and introduce expected return, dispersion and downside loss. The same SPY observations appear as a realized history and a pooled histogram. A separate hypothetical loss illustration introduces VaR and ES without assuming the market distribution is known.
 
